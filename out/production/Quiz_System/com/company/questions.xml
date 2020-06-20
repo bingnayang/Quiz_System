@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Java_Questions>
+    <Quiz>
+        <id>01</id>
+        <question>Which of the below are reserved keyword in Java?</question>
+        <optionA>array</optionA>
+        <optionB>goto</optionB>
+        <optionC>null</optionC>
+        <optionD>int</optionD>
+        <answer>b,d</answer>
+    </Quiz>
+    <Quiz>
+        <id>02</id>
+        <question>Select all the core concepts of OOPS.</question>
+        <optionA>Abstraction</optionA>
+        <optionB>Inheritance</optionB>
+        <optionC>Interface</optionC>
+        <optionD>Polymorphism</optionD>
+        <answer>a,b,d</answer>
+    </Quiz>
+</Java_Questions>
+
+
