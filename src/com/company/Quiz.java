@@ -9,6 +9,11 @@ public class Quiz {
     private String optionD;
     private String answer;
 
+    public Quiz(int id, String question) {
+        this.id = id;
+        this.question = question;
+    }
+
     public int getId() {
         return id;
     }
@@ -65,14 +70,8 @@ public class Quiz {
         this.answer = answer;
     }
     @Override
-    public String toString() {
-        return "=======================\n" +
-                "Question ID:" + this.id +
-                "\nQuestion: " + this.question +
-                "\nA) " + this.optionA +
-                "\nB) " + this.optionB +
-                "\nC) " + this.optionC +
-                "\nD) " + this.optionD +
-                "\nAnswer: " + this.answer;
+    public String toString(){
+        return id+") "+question;
     }
+
 }

@@ -12,30 +12,52 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class Main {
+    static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
         String filePath = "/Users/Bing/Documents/GitHub/BingnaYang.github.io/Quiz_System/src/com/company/questions.xml";
         File xmlFile = new File(filePath);
+        // Get Document Builder
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         DocumentBuilder documentBuilder;
 
         try{
             documentBuilder = factory.newDocumentBuilder();
             Document document = documentBuilder.parse(xmlFile);
-            System.out.println(document.getDocumentElement().getNodeName());
+            List<Quiz> quizList = new ArrayList<>();
             NodeList nodeList = document.getElementsByTagName("Quiz");
 
-            // Now XML is loaded as Document in memory
-            // Convert it to Object List
-            List<Quiz> quizList = new ArrayList<>();
-            for (int i = 0; i < nodeList.getLength(); i++) {
-                quizList.add(getQuestion(nodeList.item(i)));
-            }
-            // Print Quiz questions list information
-            for (Quiz question : quizList) {
-                System.out.println(question.toString());
+            startMenu();
+            int userInput = scanner.nextInt();
+            switch (userInput){
+                case 1:
+                    System.out.println("Quiz Start");
+                    for(int i=0; i<nodeList.getLength(); i++){
+                        Node node = nodeList.item(i);
+                        if(node.getNodeType() == Node.ELEMENT_NODE){
+                            Element element = (Element) node;
+                            // Get the value
+                            Integer id = Integer.parseInt(element.getElementsByTagName("id").item(0).getChildNodes().item(0).getNodeValue());
+                            String question = element.getElementsByTagName("question").item(0).getChildNodes().item(0).getNodeValue();
+                            quizList.add(new Quiz(id,question));
+                        }
+                    }
+                    for(Quiz quiz : quizList){
+                        System.out.println(quiz.toString());
+                    }
+                    break;
+                case 2:
+                    System.out.println("Print All Quiz Questions");
+                    break;
+                case 3:
+                    System.out.println("Goodbye");
+                    break;
+                default:
+                    System.out.println("Not an Option");
+                    break;
             }
 
         }catch (IOException e){
@@ -45,26 +67,14 @@ public class Main {
         }
     }
 
-    private static Quiz getQuestion(Node node) {
-        //XMLReaderDOM domReader = new XMLReaderDOM();
-        Quiz quizQuestion = new Quiz();
-        if (node.getNodeType() == Node.ELEMENT_NODE) {
-            Element element = (Element) node;
-            quizQuestion.setId(Integer.parseInt(getTagValue("id",element)));
-            quizQuestion.setQuestion(getTagValue("question",element));
-            quizQuestion.setOptionA(getTagValue("optionA",element));
-            quizQuestion.setOptionB(getTagValue("optionB",element));
-            quizQuestion.setOptionC(getTagValue("optionC",element));
-            quizQuestion.setOptionD(getTagValue("optionD",element));
-            quizQuestion.setAnswer(getTagValue("answer",element));
-        }
-        return quizQuestion;
-    }
-
-    private static String getTagValue(String tag, Element element) {
-        NodeList nodeList = element.getElementsByTagName(tag).item(0).getChildNodes();
-        Node node = (Node) nodeList.item(0);
-        return node.getNodeValue();
+    public static void startMenu(){
+        System.out.println("============================");
+        System.out.println("++++++Java Quiz System++++++");
+        System.out.println("1) Start the Quiz");
+        System.out.println("2) Print All Quiz Questions");
+        System.out.println("3) Quit");
+        System.out.println("============================");
+        System.out.println("Select One: ");
     }
 
 }
