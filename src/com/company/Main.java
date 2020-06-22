@@ -49,15 +49,28 @@ public class Main {
                             quizList.add(new Quiz(id,question,optionA,optionB,optionC,optionD,answer));
                         }
                     }
+                    String answer = "";
+                    int correctCount = 0;
                     for(Quiz quiz : quizList){
-                        System.out.println("\n===========================\n"+
-                                quiz.getId()+")"+quiz.getQuestion()+"\n"+
-                                "a)"+quiz.getOptionA()+"\n"+
-                                "b)"+quiz.getOptionB()+"\n"+
-                                "c)"+quiz.getOptionC()+"\n"+
-                                "d)"+quiz.getOptionD());
-                    }
+                        System.out.println("\n===================================\n"+
+                                quiz.getId()+") "+quiz.getQuestion()+"\n"+
+                                "A) "+quiz.getOptionA()+"\n"+
+                                "B) "+quiz.getOptionB()+"\n"+
+                                "C) "+quiz.getOptionC()+"\n"+
+                                "D) "+quiz.getOptionD()+"\n");
+                        System.out.println("Please enter your answer: ");
+                        answer = scanner.next();
 
+                        // Output For Testing
+                        System.out.println("Your answer: "+answer);
+                        System.out.println("Correct answer: "+quiz.getAnswer());
+
+                        if(answer.toUpperCase().equals(quiz.getAnswer())){
+                            correctCount++;
+                        }
+                    }
+                    System.out.println("\nCorrect Answer: "+correctCount+" out of "+nodeList.getLength());
+                    System.out.println("Your Java Quiz Score: ");
 
                     break;
                 case 2:
@@ -74,9 +87,12 @@ public class Main {
                     for(Quiz quiz : quizList){
                         System.out.println(quiz.toString());
                     }
-
                     break;
                 case 3:
+                    System.out.println("=====Warning=====");
+                    System.out.println("Printing All Questions with Answer");
+                    break;
+                case 4:
                     System.out.println("Goodbye");
                     break;
                 default:
@@ -96,7 +112,8 @@ public class Main {
         System.out.println("++++++Java Quiz System++++++");
         System.out.println("1) Start the Quiz");
         System.out.println("2) Print All Quiz Questions");
-        System.out.println("3) Quit");
+        System.out.println("3) Print Questions with Correct Answer");
+        System.out.println("4) Quit");
         System.out.println("============================");
         System.out.println("Select One: ");
     }

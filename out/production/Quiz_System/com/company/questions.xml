@@ -2,21 +2,21 @@
 <Java_Questions>
     <Quiz>
         <id>01</id>
-        <question>Which of the below are reserved keyword in Java?</question>
-        <optionA>array</optionA>
-        <optionB>goto</optionB>
-        <optionC>null</optionC>
-        <optionD>int</optionD>
-        <answer>b,d</answer>
+        <question>A class</question>
+        <optionA>is a blueprint from many objects</optionA>
+        <optionB>represents a specific real-world object</optionB>
+        <optionC>will hold specific values in its fields</optionC>
+        <optionD>specifies the type of a method</optionD>
+        <answer>A</answer>
     </Quiz>
     <Quiz>
         <id>02</id>
-        <question>Select all the core concepts of OOPS.</question>
-        <optionA>Abstraction</optionA>
-        <optionB>Inheritance</optionB>
-        <optionC>Interface</optionC>
-        <optionD>Polymorphism</optionD>
-        <answer>a,b,d</answer>
+        <question>In Java, a class specification</question>
+        <optionA>creates objects</optionA>
+        <optionB>requires the keyword new</optionB>
+        <optionC>creates references</optionC>
+        <optionD>none of the above</optionD>
+        <answer>D</answer>
     </Quiz>
 </Java_Questions>
 
