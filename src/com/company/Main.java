@@ -39,7 +39,33 @@ public class Main {
                         Node node = nodeList.item(i);
                         if(node.getNodeType() == Node.ELEMENT_NODE){
                             Element element = (Element) node;
-                            // Get the value
+                            Integer id = Integer.parseInt(element.getElementsByTagName("id").item(0).getChildNodes().item(0).getNodeValue());
+                            String question = element.getElementsByTagName("question").item(0).getChildNodes().item(0).getNodeValue();
+                            String optionA = element.getElementsByTagName("optionA").item(0).getChildNodes().item(0).getNodeValue();
+                            String optionB = element.getElementsByTagName("optionB").item(0).getChildNodes().item(0).getNodeValue();
+                            String optionC = element.getElementsByTagName("optionC").item(0).getChildNodes().item(0).getNodeValue();
+                            String optionD = element.getElementsByTagName("optionD").item(0).getChildNodes().item(0).getNodeValue();
+                            String answer =  element.getElementsByTagName("answer").item(0).getChildNodes().item(0).getNodeValue();
+                            quizList.add(new Quiz(id,question,optionA,optionB,optionC,optionD,answer));
+                        }
+                    }
+                    for(Quiz quiz : quizList){
+                        System.out.println("\n===========================\n"+
+                                quiz.getId()+")"+quiz.getQuestion()+"\n"+
+                                "a)"+quiz.getOptionA()+"\n"+
+                                "b)"+quiz.getOptionB()+"\n"+
+                                "c)"+quiz.getOptionC()+"\n"+
+                                "d)"+quiz.getOptionD());
+                    }
+
+
+                    break;
+                case 2:
+                    System.out.println("Print All Quiz Questions");
+                    for(int i=0; i<nodeList.getLength(); i++){
+                        Node node1 = nodeList.item(i);
+                        if(node1.getNodeType() == Node.ELEMENT_NODE){
+                            Element element = (Element) node1;
                             Integer id = Integer.parseInt(element.getElementsByTagName("id").item(0).getChildNodes().item(0).getNodeValue());
                             String question = element.getElementsByTagName("question").item(0).getChildNodes().item(0).getNodeValue();
                             quizList.add(new Quiz(id,question));
@@ -48,9 +74,7 @@ public class Main {
                     for(Quiz quiz : quizList){
                         System.out.println(quiz.toString());
                     }
-                    break;
-                case 2:
-                    System.out.println("Print All Quiz Questions");
+
                     break;
                 case 3:
                     System.out.println("Goodbye");
