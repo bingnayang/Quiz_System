@@ -20,6 +20,7 @@ public class Main {
     public static void main(String[] args) {
         String filePath = "/Users/Bing/Documents/GitHub/BingnaYang.github.io/Quiz_System/src/com/company/questions.xml";
         File xmlFile = new File(filePath);
+        List<String> options;
         // Get Document Builder
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         DocumentBuilder documentBuilder;
@@ -29,49 +30,56 @@ public class Main {
             Document document = documentBuilder.parse(xmlFile);
             List<Quiz> quizList = new ArrayList<>();
             NodeList nodeList = document.getElementsByTagName("Quiz");
+            NodeList nOptionList = null;
 
             startMenu();
             int userInput = scanner.nextInt();
             switch (userInput){
                 case 1:
-                    System.out.println("Quiz Start");
+                    System.out.println("Java Quiz Start");
                     for(int i=0; i<nodeList.getLength(); i++){
                         Node node = nodeList.item(i);
                         if(node.getNodeType() == Node.ELEMENT_NODE){
                             Element element = (Element) node;
                             Integer id = Integer.parseInt(element.getElementsByTagName("id").item(0).getChildNodes().item(0).getNodeValue());
                             String question = element.getElementsByTagName("question").item(0).getChildNodes().item(0).getNodeValue();
-                            String optionA = element.getElementsByTagName("optionA").item(0).getChildNodes().item(0).getNodeValue();
-                            String optionB = element.getElementsByTagName("optionB").item(0).getChildNodes().item(0).getNodeValue();
-                            String optionC = element.getElementsByTagName("optionC").item(0).getChildNodes().item(0).getNodeValue();
-                            String optionD = element.getElementsByTagName("optionD").item(0).getChildNodes().item(0).getNodeValue();
+                            nOptionList = element.getElementsByTagName("option");
+                            // By placing here, option list is fresh every time get a new element
+                            options = new ArrayList<>();
+                            for(int j=0; j<nOptionList.getLength(); j++){
+                                options.add(String.valueOf(nOptionList.item(j).getTextContent()));
+                            }
                             String answer =  element.getElementsByTagName("answer").item(0).getChildNodes().item(0).getNodeValue();
-                            quizList.add(new Quiz(id,question,optionA,optionB,optionC,optionD,answer));
+
+                            quizList.add(new Quiz(id,question,answer,options));
+
+
                         }
                     }
                     String answer = "";
                     int correctCount = 0;
                     for(Quiz quiz : quizList){
-                        System.out.println("\n===================================\n"+
-                                quiz.getId()+") "+quiz.getQuestion()+"\n"+
-                                "A) "+quiz.getOptionA()+"\n"+
-                                "B) "+quiz.getOptionB()+"\n"+
-                                "C) "+quiz.getOptionC()+"\n"+
-                                "D) "+quiz.getOptionD()+"\n");
-                        System.out.println("Please enter your answer: ");
+                        char alphebet ='a';
+                        System.out.println("===================================");
+                        System.out.println("["+quiz.getId()+"]"+". "+quiz.getQuestion());
+                        for(int i=0; i< quiz.getOptions().size(); i++){
+                            System.out.println(alphebet+") "+quiz.getOptions().get(i));
+                            alphebet++;
+                        }
+
+                        System.out.print("\nPlease enter your answer: ");
                         answer = scanner.next();
 
                         // Output For Testing
-                        System.out.println("Your answer: "+answer);
-                        System.out.println("Correct answer: "+quiz.getAnswer());
+//                        System.out.println("Your answer: "+answer);
+//                        System.out.println("Correct answer: "+quiz.getAnswer());
 
                         if(answer.toUpperCase().equals(quiz.getAnswer())){
                             correctCount++;
                         }
                     }
                     System.out.println("\nCorrect Answer: "+correctCount+" out of "+nodeList.getLength());
-                    System.out.println("Your Java Quiz Score: ");
-
+                    System.out.println("Your Java Quiz Score: "+((double)correctCount/(double)nodeList.getLength())*100);
                     break;
                 case 2:
                     System.out.println("Print All Quiz Questions");

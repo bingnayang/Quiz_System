@@ -3,19 +3,19 @@
     <Quiz>
         <id>01</id>
         <question>A class</question>
-        <optionA>is a blueprint from many objects</optionA>
-        <optionB>represents a specific real-world object</optionB>
-        <optionC>will hold specific values in its fields</optionC>
-        <optionD>specifies the type of a method</optionD>
+        <option>is a blueprint from many objects</option>
+        <option>represents a specific real-world object</option>
+        <option>will hold specific values in its fields</option>
+        <option>specifies the type of a method</option>
         <answer>A</answer>
     </Quiz>
     <Quiz>
         <id>02</id>
         <question>In Java, a class specification</question>
-        <optionA>creates objects</optionA>
-        <optionB>requires the keyword new</optionB>
-        <optionC>creates references</optionC>
-        <optionD>none of the above</optionD>
+        <option>creates objects</option>
+        <option>requires the keyword new</option>
+        <option>creates references</option>
+        <option>none of the above</option>
         <answer>D</answer>
     </Quiz>
 </Java_Questions>
