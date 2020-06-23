@@ -36,7 +36,7 @@ public class Main {
             int userInput = scanner.nextInt();
             switch (userInput){
                 case 1:
-                    System.out.println("Java Quiz Start");
+                    System.out.println("Java Data Structures and Algorithms Quiz Start");
                     for(int i=0; i<nodeList.getLength(); i++){
                         Node node = nodeList.item(i);
                         if(node.getNodeType() == Node.ELEMENT_NODE){
@@ -78,9 +78,13 @@ public class Main {
                             correctCount++;
                         }
                     }
+                    System.out.println("===============================");
                     System.out.println("\nCorrect Answer: "+correctCount+" out of "+nodeList.getLength());
                     System.out.println("Your Java Quiz Score: "+((double)correctCount/(double)nodeList.getLength())*100);
-                    break;
+                    System.out.println("===============================");
+
+                    startMenu();
+                    userInput = scanner.nextInt();
                 case 2:
                     System.out.println("Print All Quiz Questions");
                     for(int i=0; i<nodeList.getLength(); i++){
@@ -95,7 +99,9 @@ public class Main {
                     for(Quiz quiz : quizList){
                         System.out.println(quiz.toString());
                     }
-                    break;
+
+                    startMenu();
+                    userInput = scanner.nextInt();
                 case 3:
                     System.out.println("=====Warning=====");
                     System.out.println("Printing All Questions with Answer");
@@ -105,7 +111,8 @@ public class Main {
                     break;
                 default:
                     System.out.println("Not an Option");
-                    break;
+                    startMenu();
+                    userInput = scanner.nextInt();
             }
 
         }catch (IOException e){

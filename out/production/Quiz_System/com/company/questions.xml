@@ -2,7 +2,7 @@
 <Java_Questions>
     <Quiz>
         <id>01</id>
-        <question>A class</question>
+        <question>A class ____.</question>
         <option>is a blueprint from many objects</option>
         <option>represents a specific real-world object</option>
         <option>will hold specific values in its fields</option>
@@ -11,12 +11,76 @@
     </Quiz>
     <Quiz>
         <id>02</id>
-        <question>In Java, a class specification</question>
+        <question>In Java, a class specification ____.</question>
         <option>creates objects</option>
         <option>requires the keyword new</option>
         <option>creates references</option>
         <option>none of the above</option>
         <answer>D</answer>
+    </Quiz>
+    <Quiz>
+        <id>03</id>
+        <question>True/False: The base 2 logarithm of 100 is 2</question>
+        <option>True</option>
+        <option>False</option>
+        <answer>FALSE</answer>
+    </Quiz>
+    <Quiz>
+        <id>04</id>
+        <question>True/False: When you delete an item from an unordered array, in most cases you shift other items to fill in gap.</question>
+        <option>True</option>
+        <option>False</option>
+        <answer>TRUE</answer>
+    </Quiz>
+    <Quiz>
+        <id>05</id>
+        <question>Big O notation tells</question>
+        <option>how the speed of an algorithm relates to the number of items.</option>
+        <option>the running time of an algorithm for a given size data structure.</option>
+        <option>the running time of an algorithm for a given number of items.</option>
+        <option>how the size of a data structure relates to the number of items.</option>
+        <answer>A</answer>
+    </Quiz>
+    <Quiz>
+        <id>06</id>
+        <question>The maximum number of elements that must be examined to complete a binary search in an array of 200 element is</question>
+        <option>200</option>
+        <option>8</option>
+        <option>1</option>
+        <option>13</option>
+        <answer>B</answer>
+    </Quiz>
+    <Quiz>
+        <id>07</id>
+        <question>In the selection sort,</question>
+        <option>the largest keys accumulate on the left(low indices)</option>
+        <option>a minimum key is repeatedly discovered.</option>
+        <option>a number of items must be shifted to insert each item in its correctly sorted position.</option>
+        <option>the sorted items accumulated on the right</option>
+        <answer>B</answer>
+    </Quiz>
+    <Quiz>
+        <id>08</id>
+        <question>True/False: The bubble sort always ends up comparing every item with every other item.</question>
+        <option>True</option>
+        <option>False</option>
+        <answer>FALSE</answer>
+    </Quiz>
+    <Quiz>
+        <id>09</id>
+        <question>Computer sorting algorithms are more limited than humans in that</question>
+        <option>humans are better at inventing new algorithms</option>
+        <option>computers can handle only a fixed amount of data</option>
+        <option>humans know what to sort, whereas computers need to be told</option>
+        <option>computers can compare only two things at a time.</option>
+        <answer>D</answer>
+    </Quiz>
+    <Quiz>
+        <id>10</id>
+        <question>True/False: If there are N items, the bubble sort makes exactly N*N comparisons.</question>
+        <option>True</option>
+        <option>False</option>
+        <answer>FALSE</answer>
     </Quiz>
 </Java_Questions>
 
