@@ -32,30 +32,29 @@ public class Main {
             NodeList nodeList = document.getElementsByTagName("Quiz");
             NodeList nOptionList = null;
 
+            for(int i=0; i<nodeList.getLength(); i++){
+                Node node = nodeList.item(i);
+                if(node.getNodeType() == Node.ELEMENT_NODE){
+                    Element element = (Element) node;
+                    Integer id = Integer.parseInt(element.getElementsByTagName("id").item(0).getChildNodes().item(0).getNodeValue());
+                    String question = element.getElementsByTagName("question").item(0).getChildNodes().item(0).getNodeValue();
+                    nOptionList = element.getElementsByTagName("option");
+                    // By placing here, option list is fresh every time get a new element
+                    options = new ArrayList<>();
+                    for(int j=0; j<nOptionList.getLength(); j++){
+                        options.add(String.valueOf(nOptionList.item(j).getTextContent()));
+                    }
+                    String answer =  element.getElementsByTagName("answer").item(0).getChildNodes().item(0).getNodeValue();
+
+                    quizList.add(new Quiz(id,question,answer,options));
+                }
+            }
+
             startMenu();
             int userInput = scanner.nextInt();
             switch (userInput){
                 case 1:
                     System.out.println("Java Data Structures and Algorithms Quiz Start");
-                    for(int i=0; i<nodeList.getLength(); i++){
-                        Node node = nodeList.item(i);
-                        if(node.getNodeType() == Node.ELEMENT_NODE){
-                            Element element = (Element) node;
-                            Integer id = Integer.parseInt(element.getElementsByTagName("id").item(0).getChildNodes().item(0).getNodeValue());
-                            String question = element.getElementsByTagName("question").item(0).getChildNodes().item(0).getNodeValue();
-                            nOptionList = element.getElementsByTagName("option");
-                            // By placing here, option list is fresh every time get a new element
-                            options = new ArrayList<>();
-                            for(int j=0; j<nOptionList.getLength(); j++){
-                                options.add(String.valueOf(nOptionList.item(j).getTextContent()));
-                            }
-                            String answer =  element.getElementsByTagName("answer").item(0).getChildNodes().item(0).getNodeValue();
-
-                            quizList.add(new Quiz(id,question,answer,options));
-
-
-                        }
-                    }
                     String answer = "";
                     int correctCount = 0;
                     for(Quiz quiz : quizList){
@@ -66,7 +65,6 @@ public class Main {
                             System.out.println(alphebet+") "+quiz.getOptions().get(i));
                             alphebet++;
                         }
-
                         System.out.print("\nPlease enter your answer: ");
                         answer = scanner.next();
 
@@ -82,35 +80,23 @@ public class Main {
                     System.out.println("\nCorrect Answer: "+correctCount+" out of "+nodeList.getLength());
                     System.out.println("Your Java Quiz Score: "+((double)correctCount/(double)nodeList.getLength())*100);
                     System.out.println("===============================");
-
+                    // Display menu again
                     startMenu();
                     userInput = scanner.nextInt();
                 case 2:
                     System.out.println("Print All Quiz Questions");
-                    for(int i=0; i<nodeList.getLength(); i++){
-                        Node node1 = nodeList.item(i);
-                        if(node1.getNodeType() == Node.ELEMENT_NODE){
-                            Element element = (Element) node1;
-                            Integer id = Integer.parseInt(element.getElementsByTagName("id").item(0).getChildNodes().item(0).getNodeValue());
-                            String question = element.getElementsByTagName("question").item(0).getChildNodes().item(0).getNodeValue();
-                            quizList.add(new Quiz(id,question));
-                        }
-                    }
                     for(Quiz quiz : quizList){
                         System.out.println(quiz.toString());
                     }
-
+                    // Display menu again
                     startMenu();
                     userInput = scanner.nextInt();
                 case 3:
-                    System.out.println("=====Warning=====");
-                    System.out.println("Printing All Questions with Answer");
-                    break;
-                case 4:
                     System.out.println("Goodbye");
                     break;
                 default:
                     System.out.println("Not an Option");
+                    // Display menu again
                     startMenu();
                     userInput = scanner.nextInt();
             }
@@ -132,5 +118,6 @@ public class Main {
         System.out.println("============================");
         System.out.println("Select One: ");
     }
+
 
 }
